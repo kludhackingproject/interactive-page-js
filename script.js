@@ -96,6 +96,7 @@ buttonNext.addEventListener('click', function () {
 });
 
 
+
 // Évidemment tu t'y attendais : on va faire tourner les card dans l'autre sens aussi. Donc si un utilisateur clique sur le bouton bleu <==, la première card devra passer en dernier.
 let buttonBefore = document.querySelector('.jumbotron a.btn-primary');
 
@@ -103,4 +104,75 @@ buttonBefore.addEventListener('click', function () {
   let firstCard = document.getElementsByClassName("row")[1].firstChild;
   let cardList = document.getElementsByClassName("row")[1];
   cardList.insertBefore(firstCard, cardList.lastChild.nextSibling);
+});
+
+
+
+
+// La fonctionnalité se déclenchera si le logo de la page (JS & Events) est sélectionné et qu'on appuie sur une touche spécifique du clavier.
+let eventsButton = document.querySelector('a.navbar-brand');
+let clikEvent = false;
+let keypressed = "";
+
+eventsButton.addEventListener('click', function () {
+  clikEvent = clikEvent === false ? true : false;
+  console.log(clikEvent);
+});
+
+document.addEventListener('keypress', (event) => {
+  keypressed = event.key;
+
+  if (clikEvent) {
+    let allCards = document.querySelectorAll('.row > div');
+    document.querySelector('.album .container').style.marginLeft = 'auto';
+    document.querySelector('.album .container').style.marginRight = 0;
+
+    switch (keypressed) {
+      // Si l'utilisateur presse la touche "a", l'ensemble de la page va être condensé sur 4 colonnes Bootstrap à gauche de l'écran.
+      case 'a':
+        allCards.forEach( item => {
+          item.className = '';
+          item.className = 'col-3';
+          item.style.paddingRight = 0;
+          item.style.paddingLeft = 0;
+        });
+        document.querySelector('.album .container').style.marginLeft = 0;
+        break;
+      // Si l'utilisateur presse la touche "y", l'ensemble de la page va être condensé sur 4 colonnes Bootstrap au milieu de l'écran.
+      case 'y':
+        allCards.forEach( item => {
+          item.className = '';
+          item.className = 'col-3';
+          item.style.paddingRight = 0;
+          item.style.paddingLeft = 0;
+        });
+        document.querySelector('.album .container').style.marginRight = 'auto';
+        document.querySelector('.album .container').style.marginLeft = 'auto';
+        break;
+      // Si l'utilisateur presse la touche "p", l'ensemble de la page va être condensé sur 4 colonnes Bootstrap à droite de l'écran.
+      case 'p':
+        allCards.forEach( item => {
+          item.className = '';
+          item.className = 'col-3';
+          item.style.paddingRight = 0;
+          item.style.paddingLeft = 0;
+        });
+        document.querySelector('.album .container').style.marginRight = 0;
+        break;
+      // Si l'utilisateur presse la touche "b", tout redevient normal.
+      case 'b':
+        allCards.forEach( item => {
+          item.className = '';
+          item.className = 'col-md-4';
+          item.style.paddingRight = '15px';
+          item.style.paddingLeft = '15px';
+        });
+        document.querySelector('.album .container').style.marginRight = 'auto';
+        document.querySelector('.album .container').style.marginLeft = 'auto';
+        break;
+      default:
+        console.log('Sorry, wrong key');
+    }
+  }
+
 });
