@@ -125,7 +125,7 @@ document.addEventListener('keypress', (event) => {
   if (clikEvent) {
     let allCards = document.querySelectorAll('.row > div');
     document.querySelector('.album .container').style.marginLeft = 'auto';
-    document.querySelector('.album .container').style.marginRight = 0;
+    document.querySelector('.album .container').style.marginRight = 'auto';
 
     switch (keypressed) {
       // Si l'utilisateur presse la touche "a", l'ensemble de la page va être condensé sur 4 colonnes Bootstrap à gauche de l'écran.
@@ -172,6 +172,14 @@ document.addEventListener('keypress', (event) => {
         break;
       default:
         console.log('Sorry, wrong key');
+        allCards.forEach( item => {
+          item.className = '';
+          item.className = 'col-md-4';
+          item.style.paddingRight = '15px';
+          item.style.paddingLeft = '15px';
+        });
+        document.querySelector('.album .container').style.marginLeft = 'auto';
+        document.querySelector('.album .container').style.marginRight = 'auto';
     }
   }
 
