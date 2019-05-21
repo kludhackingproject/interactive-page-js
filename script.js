@@ -5,7 +5,7 @@ let iteration = 1;
 
 function FooterClick() {
   console.log('click');
-  console.log(`clic numéro ${i}`);
+  console.log(`clic numéro ${iteration}`);
   iteration ++;
 }
 
