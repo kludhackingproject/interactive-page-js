@@ -100,7 +100,8 @@ buttonNext.addEventListener('click', function () {
 // Évidemment tu t'y attendais : on va faire tourner les card dans l'autre sens aussi. Donc si un utilisateur clique sur le bouton bleu <==, la première card devra passer en dernier.
 let buttonBefore = document.querySelector('.jumbotron a.btn-primary');
 
-buttonBefore.addEventListener('click', function () {
+buttonBefore.addEventListener('click', function (event) {
+  event.preventDefault();
   let firstCard = document.getElementsByClassName("row")[1].firstChild;
   let cardList = document.getElementsByClassName("row")[1];
   cardList.insertBefore(firstCard, cardList.lastChild.nextSibling);
