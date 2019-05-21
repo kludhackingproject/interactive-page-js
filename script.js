@@ -44,7 +44,7 @@ let buttonEdit1 = document.querySelectorAll('.btn-outline-secondary')[0];
 
 function ChangeColorRed() {
   console.log('click');
-  this.style.backgroundColor = 'red';
+  document.querySelectorAll('.card-text')[0].style.color = 'red';
 }
 
 buttonEdit1.addEventListener('click', ChangeColorRed);
@@ -53,7 +53,7 @@ buttonEdit1.addEventListener('click', ChangeColorRed);
 let buttonEdit2 = document.querySelectorAll('.btn-outline-secondary')[1];
 
 function ChangeColorGreen() {
-  this.style.backgroundColor = this.style.backgroundColor === 'green' ? 'white' : 'green';
+  document.querySelectorAll('.card-text')[1].style.color = 'green';
 }
 
 buttonEdit2.addEventListener('click', ChangeColorGreen);
@@ -150,6 +150,7 @@ document.addEventListener('keypress', (event) => {
         document.querySelector('.album .container').style.marginLeft = 'auto';
         break;
       // Si l'utilisateur presse la touche "p", l'ensemble de la page va être condensé sur 4 colonnes Bootstrap à droite de l'écran.
+
       case 'p':
         allCards.forEach( item => {
           item.className = '';
